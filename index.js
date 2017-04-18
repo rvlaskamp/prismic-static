@@ -1,22 +1,23 @@
-const Prismic = require('prismic.io');
-const Handlebars = require('handlebars');
-const fs = require('fs');
+const prismic = require('./prismic');
+const config = require('./config');
 
-// Template
-const template = fs.readFileSync('./templates/test.hbs', 'utf8');
+const prismicApi = new prismic(config.prismic);
 
-Prismic.api('https://nerdscompanytest.prismic.io/api')
+// Connect to the Prismic.io API server
+prismicApi.connect()
 .then((api) => {
-  return api.query([
-    Prismic.Predicates.at('document.type', 'blog-post')
-  ]);
-})
-.then((response) => {
-  const data = {};
+  // Parse the pages
+  const pages = config.pages;
 
-  data.content = response.results[0].getStructuredText('blog-post.content').asHtml();
-
-  const compiledTemplate = Handlebars.compile(template);
-  console.log(compiledTemplate(data));
+  pages.map((page) => {
+    prismicApi.queryByType(page.id)
+    .then((document) => {
+      // Handlebars template data
+      const templateData = {};
+      // Get the document elements
+    })
+  });
 })
-.catch(console.error);
+.catch((error) => {
+  console.error(error);
+});
