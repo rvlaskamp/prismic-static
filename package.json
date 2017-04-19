@@ -10,6 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "handlebars": "^4.0.6",
-    "prismic.io": "^3.5.5"
+    "prismic.io": "^3.5.5",
+    "webpack": "^2.4.1",
+    "winston": "^2.3.1",
+    "yaml-front-matter": "^3.4.0"
+  },
+  "devDependencies": {
+    "webpack": "^2.4.1"
   }
 }

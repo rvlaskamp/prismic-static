@@ -1,6 +1,7 @@
 const Prismic = require('prismic.io');
+const config = require('./config/prismic');
 
-const Api = function PrismicApi(config) {
+const Api = function PrismicApi() {
   this.apiUrl = config.apiUrl;
   this.linkResolver = config.linkResolver;
   this.api = {};
@@ -23,6 +24,12 @@ Api.prototype.queryAll = function queryAll() {
 Api.prototype.queryByType = function queryByType(type) {
   return this.api.query(
     Prismic.Predicates.at('document.type', type)
+  );
+}
+
+Api.prototype.queryByTag = function queryByTag(tag) {
+  return this.api.query(
+    Prismic.Predicates.at('document.tags', tag)
   );
 }
 

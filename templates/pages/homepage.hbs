@@ -1,0 +1,18 @@
+---
+  type: homepage
+  output: index.html
+  page:
+    title: Mijn demo website
+  queryCms:
+    blogPosts:
+      predicate: type
+      id: blog-post
+---
+
+<div>
+  <section>
+    <h1>{{title.content}}</h1>
+    {{{intro.content}}}
+    <img src="{{intro-picture.url}}">
+  </section>
+</div>
