@@ -1,5 +1,5 @@
 module.exports = {
-  cms: 'prismic',
+  cms: 'contentful',
   apiUrl: 'https://nerdscompanytest.prismic.io/api',
   linkResolver(doc, ctx) {
     return '/';
